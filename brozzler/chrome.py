@@ -202,8 +202,7 @@ class Chrome:
 
         return self._websocket_url()
 
-    def _websocket_url(self):
-        timeout_sec = 600
+    def _websocket_url(self, timeout_sec = 60):
         json_url = 'http://localhost:%s/json' % self.port
         # make this a member variable so that kill -QUIT reports it
         self._start = time.time()
