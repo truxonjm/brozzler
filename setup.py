@@ -20,6 +20,7 @@ limitations under the License.
 import setuptools
 import os
 
+
 def find_package_data(package):
     pkg_data = []
     depth = len(package.split('.'))
@@ -30,75 +31,76 @@ def find_package_data(package):
             pkg_data.extend(os.path.join(relpath, f) for f in filenames)
     return pkg_data
 
+
 setuptools.setup(
-        name='brozzler',
-        version='1.5.24',
-        description='Distributed web crawling with browsers',
-        url='https://github.com/internetarchive/brozzler',
-        author='Noah Levitt',
-        author_email='nlevitt@archive.org',
-        long_description=open('README.rst', mode='rb').read().decode('UTF-8'),
-        license='Apache License 2.0',
-        packages=['brozzler', 'brozzler.dashboard'],
-        package_data={
+    name='brozzler',
+    version='1.5.24',
+    description='Distributed web crawling with browsers',
+    url='https://github.com/internetarchive/brozzler',
+    author='Noah Levitt',
+    author_email='nlevitt@archive.org',
+    long_description=open('README.rst', mode='rb').read().decode('UTF-8'),
+    license='Apache License 2.0',
+    packages=['brozzler', 'brozzler.dashboard'],
+    package_data={
             'brozzler': [
                 'js-templates/*.js*', 'behaviors.yaml', 'job_schema.yaml'],
             'brozzler.dashboard': find_package_data('brozzler.dashboard'),
-        },
-        entry_points={
-            'console_scripts': [
-                'brozzle-page=brozzler.cli:brozzle_page',
-                'brozzler-new-job=brozzler.cli:brozzler_new_job',
-                'brozzler-new-site=brozzler.cli:brozzler_new_site',
-                'brozzler-worker=brozzler.cli:brozzler_worker',
-                'brozzler-ensure-tables=brozzler.cli:brozzler_ensure_tables',
-                'brozzler-list-captures=brozzler.cli:brozzler_list_captures',
-                'brozzler-list-jobs=brozzler.cli:brozzler_list_jobs',
-                'brozzler-list-sites=brozzler.cli:brozzler_list_sites',
-                'brozzler-list-pages=brozzler.cli:brozzler_list_pages',
-                'brozzler-stop-crawl=brozzler.cli:brozzler_stop_crawl',
-                'brozzler-purge=brozzler.cli:brozzler_purge',
-                'brozzler-dashboard=brozzler.dashboard:main',
-                'brozzler-easy=brozzler.easy:main',
-                'brozzler-wayback=brozzler.pywb:main',
-            ],
-        },
-        install_requires=[
-            'PyYAML>=5.1',
-            'youtube-dl>=2018.7.21',
-            'reppy==0.3.4',
-            'requests>=2.21',
-            'websocket-client>=0.39.0,<=0.48.0',
-            'pillow>=5.2.0',
-            'urlcanon>=0.1.dev23',
-            'doublethink>=0.2.0',
-            'rethinkdb>=2.3,<2.4',
-            'cerberus>=1.0.1',
-            'jinja2>=2.10',
-            'cryptography>=2.3',
-            'python-magic>=0.4.15',
+    },
+    entry_points={
+        'console_scripts': [
+            'brozzle-page=brozzler.cli:brozzle_page',
+            'brozzler-new-job=brozzler.cli:brozzler_new_job',
+            'brozzler-new-site=brozzler.cli:brozzler_new_site',
+            'brozzler-worker=brozzler.cli:brozzler_worker',
+            'brozzler-ensure-tables=brozzler.cli:brozzler_ensure_tables',
+            'brozzler-list-captures=brozzler.cli:brozzler_list_captures',
+            'brozzler-list-jobs=brozzler.cli:brozzler_list_jobs',
+            'brozzler-list-sites=brozzler.cli:brozzler_list_sites',
+            'brozzler-list-pages=brozzler.cli:brozzler_list_pages',
+            'brozzler-stop-crawl=brozzler.cli:brozzler_stop_crawl',
+            'brozzler-purge=brozzler.cli:brozzler_purge',
+            'brozzler-dashboard=brozzler.dashboard:main',
+            'brozzler-easy=brozzler.easy:main',
+            'brozzler-wayback=brozzler.pywb:main',
         ],
-        extras_require={
-            'dashboard': [
-                'flask>=1.0',
-                'gunicorn>=19.8.1'
-            ],
-            'easy': [
-                'warcprox>=2.4b2.dev173',
-                #'pywb>=0.33.2,<2', 
-                'git+https://github.com/webrecorder/pywb.git@14e1dbb2685c431ad3995e3abc52901d1f635872 '
-                'flask>=1.0',
-                'gunicorn>=19.8.1'
-            ],
-        },
-        zip_safe=False,
-        classifiers=[
-            'Development Status :: 5 - Production/Stable',
-            'Environment :: Console',
-            'License :: OSI Approved :: Apache Software License',
-            'Programming Language :: Python :: 3.5',
-            'Programming Language :: Python :: 3.6',
-            'Programming Language :: Python :: 3.7',
-            'Topic :: Internet :: WWW/HTTP',
-            'Topic :: System :: Archiving',
-        ])
+    },
+    install_requires=[
+        'PyYAML>=5.1',
+        'youtube-dl>=2018.7.21',
+        'reppy==0.3.4',
+        'requests>=2.21',
+        'websocket-client>=0.39.0,<=0.48.0',
+        'pillow>=5.2.0',
+        'urlcanon>=0.1.dev23',
+        'doublethink>=0.2.0',
+        'rethinkdb>=2.3,<2.4',
+        'cerberus>=1.0.1',
+        'jinja2>=2.10',
+        'cryptography>=2.3',
+        'python-magic>=0.4.15',
+    ],
+    extras_require={
+        'dashboard': [
+            'flask>=1.0',
+            'gunicorn>=19.8.1'
+        ],
+        'easy': [
+            'warcprox>=2.4b2.dev173',
+            # 'pywb>=0.33.2,<2',
+            'git+https://github.com/webrecorder/pywb.git@14e1dbb2685c431ad3995e3abc52901d1f635872',
+            'flask>=1.0',
+            'gunicorn>=19.8.1'
+        ],
+    },
+    zip_safe=False,
+    classifiers=[
+        'Development Status :: 5 - Production/Stable',
+        'Environment :: Console',
+        'License :: OSI Approved :: Apache Software License',
+        'Programming Language :: Python :: 3.5',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Topic :: Internet :: WWW/HTTP',
+        'Topic :: System :: Archiving',
+    ])
