@@ -85,7 +85,8 @@ setuptools.setup(
             ],
             'easy': [
                 'warcprox>=2.4b2.dev173',
-                'pywb>=0.33.2,<2',
+                #'pywb>=0.33.2,<2', 
+                'git+https://github.com/webrecorder/pywb.git@ac84dcc2e3f0f04735764cb18e5ad6a3b9b1b0f2'
                 'flask>=1.0',
                 'gunicorn>=19.8.1'
             ],
